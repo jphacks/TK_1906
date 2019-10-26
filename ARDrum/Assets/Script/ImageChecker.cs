@@ -5,12 +5,14 @@ using UnityEngine;
 public class ImageChecker : MonoBehaviour
 {
     MeshRenderer meshRenderer;
-    bool changed;
-    bool isFirst;
+    AudioSource audioSource;
+
+    bool pastStatus;
+
     private void Start()
     {
-        isFirst = true;
-        changed = false;
+        pastStatus = false;
+        audioSource = this.gameObject.GetComponent<AudioSource>();
         meshRenderer = this.gameObject.GetComponent<MeshRenderer>();
     }
     // Update is called once per frame
@@ -21,10 +23,11 @@ public class ImageChecker : MonoBehaviour
 
     void CheckImage()
     {
-        if (meshRenderer.enabled == false && changed != meshRenderer.enabled)
+        if (meshRenderer.enabled == false && pastStatus != meshRenderer.enabled)
         {
             Debug.Log("Disappeared!!");
+            audioSource.PlayOneShot(audioSource.clip);
         }
-        changed = meshRenderer.enabled;
+        pastStatus = meshRenderer.enabled;
     }
 }
