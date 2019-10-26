@@ -22,6 +22,9 @@ ARDrum/[Aa]ssets/Plugins/Editor/JetBrains*
 # Visual Studio cache directory
 .vs/
 
+# Android Studio configuration.
+*.iml
+
 # Gradle cache directory
 .gradle/
 
@@ -50,6 +53,11 @@ ExportedObj/
 
 # Unity3D generated file on crash reports
 sysinfo.txt
+
+# User configuration.
+local.properties
+# OS configurations.
+.DS_Store
 
 # Builds
 *.apk
