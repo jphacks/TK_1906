@@ -137,6 +137,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
             case "Cymbal":
                 imageTargetCopy = Instantiate(CymbalTarget);
                 imageTargetCopy.gameObject.name = "Cymbal" + m_TargetCounter;
+
                 break;
             case "Hat":
                 imageTargetCopy = Instantiate(HatTarget);
@@ -180,6 +181,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
             ImageTargetBehaviour ImageTargetTemplate;
             switch (m_ChooseSound.GetCurrentSound())
             {
+
                 case "Bass":
                     ImageTargetTemplate = BassTarget;
                     break;
@@ -201,10 +203,11 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
 
             // generate a new target:
             m_TargetBuildingBehaviour.BuildNewTarget(targetName, ImageTargetTemplate.GetSize().x);
+            ImageTargetTemplate.gameObject.SetActive(true);
         }
-        else
+        if (m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_LOW ||
+            m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_NONE)
         {
-
             Debug.Log("Cannot build new target, due to poor camera image quality");
         }
     }

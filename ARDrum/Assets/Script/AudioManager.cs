@@ -51,12 +51,11 @@ public class AudioManager : MonoBehaviour
 
     public void playHat()
 	{
-        audioSource.PlayOneShot(Hat);
+       audioSource.PlayOneShot(Hat);
 	}
 
     public void playSnare()
 	{
         audioSource.PlayOneShot(Snare);
-        Debug.Log("SNARE!");
 	}
 }
