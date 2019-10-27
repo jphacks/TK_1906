@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="haon" size="1.000000 1.000000" />
+    <ImageTarget name="heon" size="1.000000 1.000000" />
+    <ImageTarget name="Ton_Small" size="0.010000 0.010000" />
+    <ImageTarget name="16" size="0.100000 0.100000" />
+    <ImageTarget name="Ton" size="0.100000 0.100000" />
+    <ImageTarget name="uzumaki" size="0.100000 0.100000" />
+  </Tracking>
+</QCARConfig>
