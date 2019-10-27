@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class ChooseSound : MonoBehaviour
 {
-    string soundString;
+    string soundString = "Bass";
+    AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = GameObject.Find("UserDefinedTargetBuilder").GetComponent<AudioManager>();
+    }
 
     public void ChoseSound()
     {
@@ -13,15 +19,19 @@ public class ChooseSound : MonoBehaviour
         {
             case 0:
                 soundString = "Bass";
+                audioManager.playBass();
                 break;
             case 1:
                 soundString = "Cymbal";
+                audioManager.playCymbal();
                 break;
             case 2:
                 soundString = "Hat";
+                audioManager.playHat();
                 break;
             case 3:
                 soundString = "Snare";
+                audioManager.playSnare();
                 break;
             default:
                 soundString = "NULL";
