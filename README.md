@@ -1,6 +1,6 @@
 # AR-Beats!
 
-[![Product Name](image.png)](https://www.youtube.com/watch?v=G5rULR53uMk)
+[![Product Name](image.png)](https://youtu.be/xaWcJDnDRgI)
 
 ## 製品概要
 ### Beat x Tech
