@@ -1,5 +1,6 @@
 # AR-Beats!
 
+*以下の画像がYoutubeのデモ動画へのリンクとなっております。*
 [![AR-Beats!](iOS.png)](https://youtu.be/xaWcJDnDRgI)
 
 ## 製品概要
