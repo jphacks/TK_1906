@@ -1,6 +1,6 @@
 # AR-Beats!
 
-[![AR-Beats!](iOS の画像.png)](https://youtu.be/xaWcJDnDRgI)
+[![AR-Beats!](iOS.png)](https://youtu.be/xaWcJDnDRgI)
 
 ## 製品概要
 ### Beat x Tech
