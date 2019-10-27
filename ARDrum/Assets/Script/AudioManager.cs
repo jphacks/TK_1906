@@ -10,23 +10,12 @@ public class AudioManager : MonoBehaviour
 	public AudioClip Snare;
     AudioSource audioSource;
 
-    string currentSound;
-
     void Start()
     {
 		audioSource = GetComponent<AudioSource>();
-        currentSound = "Snare";
     }
 
-    public void SetCurrentSound(string sound)
-    {
-        this.currentSound = sound;
-    }
 
-    public string GetCurrentSound()
-    {
-        return currentSound;
-    }
 
     public void playSound(string sound)
     {

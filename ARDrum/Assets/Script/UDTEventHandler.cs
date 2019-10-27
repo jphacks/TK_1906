@@ -36,7 +36,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
     UserDefinedTargetBuildingBehaviour m_TargetBuildingBehaviour;
     ObjectTracker m_ObjectTracker;
     FrameQualityMeter m_FrameQualityMeter;
-    AudioManager m_AudioManager;
+    ChooseSound m_ChooseSound;
 
     // DataSet that newly defined targets are added to
     DataSet m_UDT_DataSet;
@@ -53,7 +53,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
     void Start()
     {
         m_TargetBuildingBehaviour = GetComponent<UserDefinedTargetBuildingBehaviour>();
-        m_AudioManager = GetComponent<AudioManager>();
+        m_ChooseSound = GameObject.Find("Dropdown").GetComponent<ChooseSound>();
 
         if (m_TargetBuildingBehaviour)
         {
@@ -128,7 +128,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
 
         // Get predefined trackable and instantiate it
         ImageTargetBehaviour imageTargetCopy;
-        switch (m_AudioManager.GetCurrentSound())
+        switch (m_ChooseSound.GetCurrentSound())
         {
             case "Bass":
                 imageTargetCopy = Instantiate(BassTarget);
@@ -178,7 +178,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
             // create the name of the next target.
             // the TrackableName of the original, linked ImageTargetBehaviour is extended with a continuous number to ensure unique names
             ImageTargetBehaviour ImageTargetTemplate;
-            switch (m_AudioManager.GetCurrentSound())
+            switch (m_ChooseSound.GetCurrentSound())
             {
                 case "Bass":
                     ImageTargetTemplate = BassTarget;
