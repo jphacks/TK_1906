@@ -208,6 +208,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
         if (m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_LOW ||
             m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_NONE)
         {
+            this.gameObject.GetComponent<OnRED>().ActivateCaution();
             Debug.Log("Cannot build new target, due to poor camera image quality");
         }
     }

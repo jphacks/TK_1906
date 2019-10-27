@@ -28,15 +28,14 @@ public class AudioManager : MonoBehaviour
                 audioSource.PlayOneShot(Cymbal);
                 break;
             case "Hat":
+                audioSource.volume = 1.0f;
                 audioSource.PlayOneShot(Hat);
+                audioSource.volume = 0.7f;
                 break;
             case "Snare":
                 audioSource.PlayOneShot(Snare);
                 break;
         }
-
-
-
     }
 
     public void playBass()
