@@ -8,12 +8,46 @@ public class AudioManager : MonoBehaviour
     public AudioClip Cymbal;
     public AudioClip Hat;
 	public AudioClip Snare;
-	public AudioSource audioSource;
+    AudioSource audioSource;
 
+    string currentSound;
 
     void Start()
     {
 		audioSource = GetComponent<AudioSource>();
+        currentSound = "Snare";
+    }
+
+    public void SetCurrentSound(string sound)
+    {
+        this.currentSound = sound;
+    }
+
+    public string GetCurrentSound()
+    {
+        return currentSound;
+    }
+
+    public void playSound(string sound)
+    {
+        switch (sound)
+        {
+            case "Bass":
+                audioSource.PlayOneShot(Bass);
+                break;
+            case "Cymbal":
+                audioSource.PlayOneShot(Cymbal);
+                break;
+            case "Hat":
+                audioSource.PlayOneShot(Hat);
+                break;
+            case "Snare":
+                audioSource.PlayOneShot(Snare);
+                break;
+        }
+
+
+
     }
 
     public void playBass()
@@ -34,5 +68,6 @@ public class AudioManager : MonoBehaviour
     public void playSnare()
 	{
         audioSource.PlayOneShot(Snare);
+        Debug.Log("SNARE!");
 	}
 }

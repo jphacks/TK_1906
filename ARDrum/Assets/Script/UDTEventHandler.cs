@@ -18,7 +18,11 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
     /// Can be set in the Unity inspector to reference an ImageTargetBehaviour
     /// that is instantiated for augmentations of new User-Defined Targets.
     /// </summary>
-    public ImageTargetBehaviour ImageTargetTemplate;
+    public ImageTargetBehaviour BassTarget;
+    public ImageTargetBehaviour CymbalTarget;
+    public ImageTargetBehaviour HatTarget;
+    public ImageTargetBehaviour SnareTarget;
+    public ImageTargetBehaviour Empty;
 
     public int LastTargetIndex
     {
@@ -32,6 +36,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
     UserDefinedTargetBuildingBehaviour m_TargetBuildingBehaviour;
     ObjectTracker m_ObjectTracker;
     FrameQualityMeter m_FrameQualityMeter;
+    AudioManager m_AudioManager;
 
     // DataSet that newly defined targets are added to
     DataSet m_UDT_DataSet;
@@ -48,6 +53,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
     void Start()
     {
         m_TargetBuildingBehaviour = GetComponent<UserDefinedTargetBuildingBehaviour>();
+        m_AudioManager = GetComponent<AudioManager>();
 
         if (m_TargetBuildingBehaviour)
         {
@@ -121,8 +127,31 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
         }
 
         // Get predefined trackable and instantiate it
-        ImageTargetBehaviour imageTargetCopy = Instantiate(ImageTargetTemplate);
-        imageTargetCopy.gameObject.name = "UserDefinedTarget-" + m_TargetCounter;
+        ImageTargetBehaviour imageTargetCopy;
+        switch (m_AudioManager.GetCurrentSound())
+        {
+            case "Bass":
+                imageTargetCopy = Instantiate(BassTarget);
+                imageTargetCopy.gameObject.name = "Bass" + m_TargetCounter;
+                break;
+            case "Cymbal":
+                imageTargetCopy = Instantiate(CymbalTarget);
+                imageTargetCopy.gameObject.name = "Cymbal" + m_TargetCounter;
+                break;
+            case "Hat":
+                imageTargetCopy = Instantiate(HatTarget);
+                imageTargetCopy.gameObject.name = "Hat" + m_TargetCounter;
+                break;
+            case "Snare":
+                imageTargetCopy = Instantiate(SnareTarget);
+                imageTargetCopy.gameObject.name = "Snare" + m_TargetCounter;
+                break;
+            default:
+                imageTargetCopy = Instantiate(Empty);
+                break;
+        }
+
+
 
         // Add the duplicated trackable to the data set and activate it
         m_UDT_DataSet.CreateTrackable(trackableSource, imageTargetCopy.gameObject);
@@ -148,6 +177,26 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
         {
             // create the name of the next target.
             // the TrackableName of the original, linked ImageTargetBehaviour is extended with a continuous number to ensure unique names
+            ImageTargetBehaviour ImageTargetTemplate;
+            switch (m_AudioManager.GetCurrentSound())
+            {
+                case "Bass":
+                    ImageTargetTemplate = BassTarget;
+                    break;
+                case "Cymbal":
+                    ImageTargetTemplate = CymbalTarget;
+                    break;
+                case "Hat":
+                    ImageTargetTemplate = HatTarget;
+                    break;
+                case "Snare":
+                    ImageTargetTemplate = SnareTarget;
+                    break;
+                default:
+                    ImageTargetTemplate = Empty;
+                    break;
+            }
+
             string targetName = string.Format("{0}-{1}", ImageTargetTemplate.TrackableName, m_TargetCounter);
 
             // generate a new target:
@@ -155,6 +204,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
         }
         else
         {
+
             Debug.Log("Cannot build new target, due to poor camera image quality");
         }
     }
