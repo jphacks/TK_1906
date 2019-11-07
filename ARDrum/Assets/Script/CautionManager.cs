@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnRED : MonoBehaviour
+public class CautionManager : MonoBehaviour
 {
-    public GameObject REDPannel;
+    public GameObject CautionPannel;
 
     public void ActivateCaution()
     {
-        REDPannel.SetActive(true);
+        CautionPannel.SetActive(true);
         Invoke("setFalse", 1f);
     }
 
     void setFalse()
     {
-        REDPannel.SetActive(false);
+        CautionPannel.SetActive(false);
     }
 }
