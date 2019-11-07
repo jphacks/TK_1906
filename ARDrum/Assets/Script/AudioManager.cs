@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    /// ドラム
     public AudioClip Bass;
     public AudioClip Cymbal;
     public AudioClip Hat;
 	public AudioClip Snare;
+    ///　ピアノ
+    public AudioClip Do;
+    public AudioClip Re;
+    public AudioClip Mi;
+    public AudioClip Fa;
+    public AudioClip So;
+    public AudioClip Ra;
+    public AudioClip Si;
+    public AudioClip Do2;
     AudioSource audioSource;
 
     void Start()
@@ -21,6 +31,7 @@ public class AudioManager : MonoBehaviour
     {
         switch (sound)
         {
+            /// ドラム
             case "Bass":
                 audioSource.PlayOneShot(Bass);
                 break;
@@ -35,26 +46,32 @@ public class AudioManager : MonoBehaviour
             case "Snare":
                 audioSource.PlayOneShot(Snare);
                 break;
+            /// ピアノ
+            case "Do":
+                audioSource.PlayOneShot(Do);
+                break;
+            case "Re":
+                audioSource.PlayOneShot(Re);
+                break;
+            case "Mi":
+                audioSource.PlayOneShot(Mi);
+                break;
+            case "Fa":
+                audioSource.PlayOneShot(Fa);
+                break;
+            case "So":
+                audioSource.PlayOneShot(So);
+                break;
+            case "Ra":
+                audioSource.PlayOneShot(Ra);
+                break;
+            case "Si":
+                audioSource.PlayOneShot(Si);
+                break;
+            case "Do2":
+                audioSource.PlayOneShot(Do2);
+                break;
+
         }
     }
-
-    public void playBass()
-	{
-        audioSource.PlayOneShot(Bass);
-	}
-
-	public void playCymbal()
-	{
-        audioSource.PlayOneShot(Cymbal);
-	}
-
-    public void playHat()
-	{
-       audioSource.PlayOneShot(Hat);
-	}
-
-    public void playSnare()
-	{
-        audioSource.PlayOneShot(Snare);
-	}
 }

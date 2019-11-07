@@ -19,24 +19,45 @@ public class ChooseSound : MonoBehaviour
         {
             case 0:
                 soundString = "Bass";
-                audioManager.playBass();
                 break;
             case 1:
                 soundString = "Cymbal";
-                audioManager.playCymbal();
                 break;
             case 2:
                 soundString = "Hat";
-                audioManager.playHat();
                 break;
             case 3:
                 soundString = "Snare";
-                audioManager.playSnare();
+                break;
+            case 4:
+                soundString = "Do";
+                break;
+            case 5:
+                soundString = "Re";
+                break;
+            case 6:
+                soundString = "Mi";
+                break;
+            case 7:
+                soundString = "Fa";
+                break;
+            case 8:
+                soundString = "So";
+                break;
+            case 9:
+                soundString = "Ra";
+                break;
+            case 10:
+                soundString = "Si";
+                break;
+            case 11:
+                soundString = "Do2";
                 break;
             default:
                 soundString = "NULL";
                 break;
         }
+        audioManager.playSound(soundString);
     }
 
     public string GetCurrentSound()

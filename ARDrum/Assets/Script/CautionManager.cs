@@ -9,7 +9,7 @@ public class CautionManager : MonoBehaviour
     public void ActivateCaution()
     {
         CautionPannel.SetActive(true);
-        Invoke("setFalse", 1f);
+        Invoke("setFalse", 2.5f);
     }
 
     void setFalse()
