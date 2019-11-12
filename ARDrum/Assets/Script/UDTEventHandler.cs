@@ -18,10 +18,21 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
     /// Can be set in the Unity inspector to reference an ImageTargetBehaviour
     /// that is instantiated for augmentations of new User-Defined Targets.
     /// </summary>
+    /// ドラム
     public ImageTargetBehaviour BassTarget;
     public ImageTargetBehaviour CymbalTarget;
     public ImageTargetBehaviour HatTarget;
     public ImageTargetBehaviour SnareTarget;
+    ///　ピアノ
+    public ImageTargetBehaviour Do;
+    public ImageTargetBehaviour Re;
+    public ImageTargetBehaviour Mi;
+    public ImageTargetBehaviour Fa;
+    public ImageTargetBehaviour So;
+    public ImageTargetBehaviour Ra;
+    public ImageTargetBehaviour Si;
+    public ImageTargetBehaviour Do2;
+    /// 空
     public ImageTargetBehaviour Empty;
 
     public int LastTargetIndex
@@ -32,7 +43,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
 
 
     #region PRIVATE_MEMBERS
-    const int MAX_TARGETS = 5;
+    const int MAX_TARGETS = 20;
     UserDefinedTargetBuildingBehaviour m_TargetBuildingBehaviour;
     ObjectTracker m_ObjectTracker;
     FrameQualityMeter m_FrameQualityMeter;
@@ -130,6 +141,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
         ImageTargetBehaviour imageTargetCopy;
         switch (m_ChooseSound.GetCurrentSound())
         {
+            /// ドラム
             case "Bass":
                 imageTargetCopy = Instantiate(BassTarget);
                 imageTargetCopy.gameObject.name = "Bass" + m_TargetCounter;
@@ -146,6 +158,39 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
             case "Snare":
                 imageTargetCopy = Instantiate(SnareTarget);
                 imageTargetCopy.gameObject.name = "Snare" + m_TargetCounter;
+                break;
+            /// ピアノ
+            case "Do":
+                imageTargetCopy = Instantiate(Do);
+                imageTargetCopy.gameObject.name = "Do" + m_TargetCounter;
+                break;
+            case "Re":
+                imageTargetCopy = Instantiate(Re);
+                imageTargetCopy.gameObject.name = "Re" + m_TargetCounter;
+                break;
+            case "Mi":
+                imageTargetCopy = Instantiate(Mi);
+                imageTargetCopy.gameObject.name = "Mi" + m_TargetCounter;
+                break;
+            case "Fa":
+                imageTargetCopy = Instantiate(Fa);
+                imageTargetCopy.gameObject.name = "Fa" + m_TargetCounter;
+                break;
+            case "So":
+                imageTargetCopy = Instantiate(So);
+                imageTargetCopy.gameObject.name = "So" + m_TargetCounter;
+                break;
+            case "Ra":
+                imageTargetCopy = Instantiate(Ra);
+                imageTargetCopy.gameObject.name = "Ra" + m_TargetCounter;
+                break;
+            case "Si":
+                imageTargetCopy = Instantiate(Si);
+                imageTargetCopy.gameObject.name = "Si" + m_TargetCounter;
+                break;
+            case "Do2":
+                imageTargetCopy = Instantiate(Do2);
+                imageTargetCopy.gameObject.name = "Do2" + m_TargetCounter;
                 break;
             default:
                 imageTargetCopy = Instantiate(Empty);
@@ -181,7 +226,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
             ImageTargetBehaviour ImageTargetTemplate;
             switch (m_ChooseSound.GetCurrentSound())
             {
-
+                /// ドラム
                 case "Bass":
                     ImageTargetTemplate = BassTarget;
                     break;
@@ -193,6 +238,31 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
                     break;
                 case "Snare":
                     ImageTargetTemplate = SnareTarget;
+                    break;
+                /// ピアノ
+                case "Do":
+                    ImageTargetTemplate = Do;
+                    break;
+                case "Re":
+                    ImageTargetTemplate = Re;
+                    break;
+                case "Mi":
+                    ImageTargetTemplate = Mi;
+                    break;
+                case "Fa":
+                    ImageTargetTemplate = Fa;
+                    break;
+                case "So":
+                    ImageTargetTemplate = So;
+                    break;
+                case "Ra":
+                    ImageTargetTemplate = Ra;
+                    break;
+                case "Si":
+                    ImageTargetTemplate = Si;
+                    break;
+                case "Do2":
+                    ImageTargetTemplate = Do2;
                     break;
                 default:
                     ImageTargetTemplate = Empty;
@@ -208,7 +278,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
         if (m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_LOW ||
             m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_NONE)
         {
-            this.gameObject.GetComponent<OnRED>().ActivateCaution();
+            this.gameObject.GetComponent<CautionManager>().ActivateCaution();
             Debug.Log("Cannot build new target, due to poor camera image quality");
         }
     }
